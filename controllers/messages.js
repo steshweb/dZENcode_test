@@ -13,8 +13,9 @@ const addMessage = async (req, res) => {
     const insertQuery = 'INSERT INTO messages (user_name, email, password, parent_id, message, captcha, home_page) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *';
     const insertedData = await db.one(insertQuery, [user_name, email, password, parent_id, message, captcha, home_page]);
 
-    return res.json({ message: 'Message created successfully', insertedData });
-  } catch (error) {
+    res.json({ message: 'Message created successfully', insertedData });
+  } 
+  catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'An error occurred' });
   }
