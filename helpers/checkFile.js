@@ -2,8 +2,8 @@ const sharp = require('sharp');
 const fs = require('fs/promises');
 const path = require('path');
 
-const checkFile = async(file) => {
-  const fileName = file.originalname;
+const checkFile = async (file) => {
+  const fileName = file.filename;
 
   if (fileName.endsWith('.txt')) {
     try {
@@ -14,7 +14,7 @@ const checkFile = async(file) => {
       return newPath;
     }
     catch {
-      return null
+      throw new Error('Error processing .txt file');
     }
   }
 
@@ -35,10 +35,11 @@ const checkFile = async(file) => {
       return newPath;
     } 
     catch {
-      return null;
+      throw new Error('Error processing image file');
     }
   }
-  return null
+
+  throw new Error('Unsupported file type');
 }
 
 module.exports = checkFile;

@@ -4,10 +4,13 @@ const Comment = require('../models/commentModel');
 
 const addComment = async (req, res) => {
   const { user_name, email, home_page, parent_id, message_text } = req.body;
-
-  const file_path = req.file ? await checkFile(req.file) : null;
+  let file_path = null;
 
   try {
+    if (req.file) {
+      file_path = await checkFile(req.file);
+    }
+
     const createdComment = await Comment.create({
       user_name,
       message_text,
@@ -20,7 +23,7 @@ const addComment = async (req, res) => {
     res.json(createdComment);
   } 
   catch (error) {
-    res.status(500).json(error.message);
+    res.status(500).json({ error: error.message });
   }
 }
 
@@ -31,7 +34,7 @@ const getAllComments = async (req, res) => {
     res.status(200).json(commentTree);
   }
   catch (error){
-    res.status(500).json(error.message);
+    res.status(500).json({ error: error.message });
   }
 }
 
@@ -50,7 +53,7 @@ const getCommentById = async(req, res) => {
     res.json(commentTree);
   }
   catch (error){
-    res.status(500).json(error.message);
+    res.status(500).json({ error: error.message });
   }
 }
 
