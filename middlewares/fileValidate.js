@@ -6,7 +6,7 @@ const fileValidate = async (req, res, next) => {
   if (req.file) {
 
     const fileName = req.file.filename;
-    const filePath = path.join('tmp', fileName);
+    const filePath = path.join(__dirname, '..', 'tmp', fileName);
 
     if (fileName.endsWith('.txt')) {
 

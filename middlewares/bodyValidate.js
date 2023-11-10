@@ -32,7 +32,7 @@ const bodyValidate = async (req, res, next) => {
     if (req.file) {
       try {
         const fileName = req.file.filename;
-        const filePath = path.join('tmp', fileName);
+        const filePath = path.join(__dirname, '..', 'tmp', fileName);
         await fs.unlink(filePath);
       }
       catch (error) {

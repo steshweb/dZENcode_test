@@ -13,7 +13,7 @@ const messageValidate = async (req, res, next) => {
   else {
     if (req.file) {
       const fileName = req.file.filename;
-      const filePath = path.join('tmp', fileName);
+      const filePath = path.join(__dirname, '..', 'tmp', fileName);
       try {
         await fs.unlink(filePath);
       }
