@@ -21,5 +21,5 @@ npm init, npm start
 6. Hosting - https://dzencode-test-83ff.onrender.com
 7. Github - https://github.com/steshweb/dZENcode_test/tree/main
 8. .env 
-    DATABASE_URL=postgres://tbamhowh:vDfqiIIqjAUJwoeWFlAZV8UsXg7kN6On@flora.db.elephantsql.com/tbamhowh
-    PORT=3000
+    DATABASE_URL
+    PORT
