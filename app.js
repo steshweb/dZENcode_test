@@ -3,7 +3,7 @@ const express = require('express');
 const commentRouter = require('./routers/commentRouter');
 
 const app = express();
-const port = 3000;
+const { PORT } = process.env;
 
 app.use(express.json());
 app.use('/storage', express.static('storage'));
@@ -20,6 +20,6 @@ app.use((err, req, res, next) => {
   res.status(status).json({ message: message })
 })
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
