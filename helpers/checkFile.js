@@ -7,9 +7,8 @@ const checkFile = async (file) => {
 
   if (fileName.endsWith('.txt')) {
     try {
-      const uniqueFileName = Date.now() + '_' + fileName;
       const sourcePath = file.path;
-      const newPath = path.join('storage', uniqueFileName);
+      const newPath = path.join('storage', fileName);
       await fs.rename(sourcePath, newPath);
       return newPath;
     }
@@ -20,9 +19,8 @@ const checkFile = async (file) => {
 
   if (fileName.endsWith('.png') || fileName.endsWith('.jpg') || fileName.endsWith('.gif')) {
     try {
-      const uniqueFileName = Date.now() + '_' + fileName;
       const sourcePath = file.path;
-      const newPath = path.join('storage', uniqueFileName);
+      const newPath = path.join('storage', fileName);
 
       const image = sharp(sourcePath);
 
