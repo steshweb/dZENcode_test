@@ -8,8 +8,11 @@ const captchaValidate = async (req, res, next) => {
     if (req.file) {
       const fileName = req.file.filename;
       const filePath = path.join(__dirname, '..', 'tmp', fileName);
-
+      const folderPath = path.join(__dirname, '..', 'tmp');
+      
       try {
+        const tmp = await fs.readdir(folderPath);
+        console.log(tmp);
         await fs.unlink(filePath);
       }
       catch (error) {
